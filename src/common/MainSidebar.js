@@ -1,5 +1,6 @@
 import React from 'react'
 import './MainSidebar.css';
+import { Link } from 'react-router-dom';
 
 //rce para generar esta estructura automaticamente
 
@@ -12,9 +13,9 @@ function MainSidebar() {
             </header>
             <div className="l-navbar" id="nav-bar">
                 <nav className="nav">
-                    <div> <a href="#" className="nav_logo"> <i className='bx bx-layer nav_logo-icon'></i> <span className="nav_logo-name">Megalabs Picking</span> </a>
+                    <div> <a href="/" className="nav_logo"> <i className='bx bx-layer nav_logo-icon'></i> <span className="nav_logo-name">Megalabs Picking</span> </a>
                         <div className="nav_list">
-                            <a href="#" className="nav_link active"> <i className='bx bx-grid-alt nav_icon'></i> <span className="nav_name">Ordenes</span> </a>
+                            <a href="/orden" className="nav_link active"> <i className='bx bx-grid-alt nav_icon'></i> <span className="nav_name">Ordenes</span> </a>
                             <a href="#" className="nav_link"> <i className='bx bx-user nav_icon'></i> <span className="nav_name">Usuarios</span> </a>
                             <a href="#" className="nav_link"> <i className='bx bx-message-square-detail nav_icon'></i> <span className="nav_name">Notificaciones</span> </a>
                             <a href="#" className="nav_link"> <i className='bx bx-bookmark nav_icon'></i> <span className="nav_name">Historico</span> </a>
@@ -24,13 +25,13 @@ function MainSidebar() {
                     </div> <a href="#" className="nav_link"> <i className='bx bx-log-out nav_icon'></i> <span className="nav_name">Cerrar Sesion</span> </a>
                 </nav>
             </div>
-            {/*<!--Container Main start-->*/}
+            {/*<!--Container Main start
             <div className="height-100 bg-light">
                 <h4>Main Components</h4>
 
 
             </div>
-
+-->*/}
             { /*<!--Container Main end-->*/}
         </section >
     )

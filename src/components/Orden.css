@@ -1,0 +1,10 @@
+
+#exampleModalCenter.modal{
+    --bs-modal-width: auto;
+    position: fixed;
+    left: 5%;
+    right: 10%;
+    min-width: 100px;
+    max-width: 90%;
+    
+}

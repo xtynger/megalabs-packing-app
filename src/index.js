@@ -8,19 +8,25 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'; //Esto es para implementar "Routing" en react, diferente a Angular
+import { BrowserRouter, Routes, Route ,Switch } from 'react-router-dom'; //Esto es para implementar "Routing" en react, diferente a Angular
 import MainSidebar from './common/MainSidebar';
 import MainBar from './common/MainBar';
 import MainHeader from './common/MainHeader';
+import Orden from './components/Orden';
+import LoginScreen from './components/LoginScreen';
+import RegistrarUsuario from './components/RegistrarUsuario';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 root.render(
+
   <BrowserRouter>
-  <MainHeader/>
-  <MainSidebar/>
     <Routes>
-        <Route path="/" element={<App/>}/>
+      <Route path="/" element={<LoginScreen />} />
+      <Route path="/home" element={<App/>} />
+      <Route path="/orden" element={<Orden />} />
+      <Route path="/registro" element={<RegistrarUsuario/>} />
+
     </Routes>
   </BrowserRouter>,
 
