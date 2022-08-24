@@ -26,12 +26,12 @@ class Orden extends Component {
     componentDidMount() {
         this.leerOrdenes();
     }
-    //componentDidUpdate() {
-        //this.leerOrdenes();
-   // }
+    componentDidUpdate() {
+        this.leerOrdenes();
+    }
 
     leerOrdenes() {
-        const rutaServicio = "http://megalabs.digitalbroperu.com/serviciolistarorden.php"
+        const rutaServicio = "https://megalabs.digitalbroperu.com/serviciolistarorden.php"
         fetch(rutaServicio)
             .then(
                 res => res.json() //indicamos que el objeto devuelto por dicha solicitud al servicio, sera un Json

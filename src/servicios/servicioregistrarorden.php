@@ -16,16 +16,13 @@
     //$fechaCompletado = $_REQUEST["fechaCompletado"];
     $estado = $_REQUEST["estado"];
 
-    
+
     //$date = getdate();
      //echo $date[year],'-',$date[mon],'-',$date[mday],' ',$date[hours],':',$date[minutes],':',$date[seconds];
 
 	$rs = mysqli_query($cn,
-		"insert into Orden (idClienteAx,nombreCliente,
-        referencia,pedidoDeVentas,fechaSubida,estado) 
-        values('".$idClienteAx."',
-        '".$nombreCliente."','".$referencia."','".$pedidoDeVentas."',
-        '".$fechaSubida."','".$estado."')");
+		"insert into Orden (idClienteAx,nombreCliente,referencia,pedidoDeVentas,fechaSubida,estado) 
+        values('".$idClienteAx."','".$nombreCliente."','".$referencia."','".$pedidoDeVentas."','".$fechaSubida."','".$estado."')");
 
 	echo mysqli_insert_id($cn); 
 	mysqli_close($cn);

@@ -1,0 +1,11 @@
+tr.active::before{
+    display: none;
+}
+tr.active{
+    color: black;
+    background-color: #54cfcf;
+}
+#exampleModalCenter {
+    --nav-width: 100%;
+
+}

@@ -29,7 +29,7 @@ class LoginScreen extends Component {
 
         fetch(rutaServicio, { method: 'POST', body: formData })
             .then(res => res.text())
-            .then((result) => {console.log(result);
+            .then((result) => {console.table(result);
                 this.evaluarSesion(result)
                 
             }
@@ -73,15 +73,11 @@ class LoginScreen extends Component {
                         <div className="p-3 mt-3">
                             <div className="form-field d-flex align-items-center">
                             <FontAwesomeIcon  icon={faUser}/>
-                                <input className="form-control" type="text" name="username" id="username" placeholder="Username"
-                                    values={this.state.username}
-                                    onChange={(e) => this.setState({ username: e.target.value })} />
+                                <input className="form-control" type="text" name="username" id="username" placeholder="Username"values={this.state.username}onChange={(e) => this.setState({ username: e.target.value })} />
                             </div>
                             <div className="form-field d-flex align-items-center">
                             <FontAwesomeIcon icon={faKey}/>
-                                <input className="form-control" type="password" name="password" id="password" placeholder="Password"
-                                    values={this.state.password}
-                                    onChange={(e) => this.setState({ password: e.target.value })} />
+                                <input className="form-control" type="password" name="password" id="password" placeholder="Password"values={this.state.password}onChange={(e) => this.setState({ password: e.target.value })} />
                             </div>
                             <div>
                                 <input type="button" className="btn mt-3" value="Iniciar Sesion" onClick={() => this.iniciarSesion()}/>

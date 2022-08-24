@@ -14,7 +14,7 @@
         {
            // echo $row["passwordHash"];
             
-            $res[] = $row;
+            $res = $row;
             echo json_encode($res,JSON_UNESCAPED_UNICODE);
         }
         else{

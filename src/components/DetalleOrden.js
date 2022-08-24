@@ -19,7 +19,7 @@ class DetalleOrden extends Component {
 
 
   componentWillReceiveProps(props) {
-    console.log(props.detalleOrden)
+    //console.log(props.detalleOrden)
     this.leerDetalle(props.detalleOrden.idOrden)
   }
 
@@ -31,7 +31,7 @@ class DetalleOrden extends Component {
     fetch(rutaServicio, { method: 'POST', body: formData })
       .then(res => res.json())
       .then((result) => {
-        console.log(result);
+        //console.log(result);
         this.setState({ listaDetalle: result, progreso: 0 })
       })
   }
@@ -40,13 +40,13 @@ class DetalleOrden extends Component {
     const checked = e.target.checked;
     if (checked) {
       this.setState({ progreso: this.state.progreso + 1 });
-      console.log("marcado ", this.state.progreso + 1);
+      //console.log("marcado ", this.state.progreso + 1);
 
     }
 
     else {
       this.setState({ progreso: this.state.progreso - 1 })
-      console.log("desmarcado ", this.state.progreso - 1);
+      //console.log("desmarcado ", this.state.progreso - 1);
 
     }
   };
