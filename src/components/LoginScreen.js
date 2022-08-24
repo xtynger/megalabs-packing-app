@@ -17,21 +17,22 @@ class LoginScreen extends Component {
         }
     }
 
-
     iniciarSesion = () => {
-        const rutaServicio = "http://megalabs.digitalbroperu.com/serviciologinusuario.php";
-        
+        const rutaServicio = "https://megalabs.digitalbroperu.com/serviciologinusuario.php";
+
         var formData = new FormData();
         formData.append("username", this.state.username);
         formData.append("password", this.state.password);
 
+
         fetch(rutaServicio, { method: 'POST', body: formData })
             .then(res => res.text())
-            .then((result) => { console.log(result);
-            this.evaluarSesion(result) 
+            .then((result) => {
+                this.evaluarSesion(result)
             }
-            )
-            
+            );
+
+
     }
 
 
@@ -54,9 +55,7 @@ class LoginScreen extends Component {
 
 
     render() {
-        var redireccionar =
-            this.state.inicioSesion === true ?
-                <Navigate to='/home' replace={true} /> : ''
+        var redireccionar = this.state.inicioSesion === true ? <Navigate to='/home' replace={true} /> : ''
         return (
             <section id="login" className="padded">
                 {redireccionar}
@@ -68,21 +67,23 @@ class LoginScreen extends Component {
                         <div className="text-center mt-4 name">
                             Megalabs Picking
                         </div>
-                        <form className="p-3 mt-3">
-                            <div className="form-field d-flex align-items-center">
+                        <div className="p-3 mt-3">
+                            <div className="d-flex align-items-center">
                                 <span className="far fa-user"></span>
-                                <input type="text" name="username" id="username" placeholder="Username" 
-                                values={this.state.username}
-                                onChange={(e) => this.setState({username: e.target.value})}/>
+                                <input className="form-control" type="text" name="username" id="username" placeholder="Username"
+                                    values={this.state.username}
+                                    onChange={(e) => this.setState({ username: e.target.value })} />
                             </div>
-                            <div className="form-field d-flex align-items-center">
+                            <div className="d-flex align-items-center">
                                 <span className="fas fa-key"></span>
-                                <input type="password" name="password" id="password" placeholder="Password" 
-                                values={this.state.password}
-                                onChange={(e) => this.setState({password: e.target.value})}/>
+                                <input className="form-control" type="password" name="password" id="password" placeholder="Password"
+                                    values={this.state.password}
+                                    onChange={(e) => this.setState({ password: e.target.value })} />
                             </div>
-                            <button className="btn mt-3" onClick= {() => this.iniciarSesion()}>Iniciar Sesion</button>
-                        </form>
+                            <div>
+                                <input type="button" className="btn mt-3" value="Iniciar Sesion" onClick={() => this.iniciarSesion()}/>
+                            </div>
+                        </div>
                         <div className="text-center fs-6">
                             {/* <a href="#">Olvide contraseña</a> or <a href="#">Sign up</a> */}
                             <a href="#">Olvide contraseña</a> or <a href="/registro">Registrar</a>
