@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import './LoginScreen.css';
 import { Link } from 'react-router-dom';
 import { Navigate } from 'react-router'
+import { faEdit, faKey, faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 class LoginScreen extends Component {
@@ -27,8 +29,9 @@ class LoginScreen extends Component {
 
         fetch(rutaServicio, { method: 'POST', body: formData })
             .then(res => res.text())
-            .then((result) => {
+            .then((result) => {console.log(result);
                 this.evaluarSesion(result)
+                
             }
             );
 
@@ -68,14 +71,14 @@ class LoginScreen extends Component {
                             Megalabs Picking
                         </div>
                         <div className="p-3 mt-3">
-                            <div className="d-flex align-items-center">
-                                <span className="far fa-user"></span>
+                            <div className="form-field d-flex align-items-center">
+                            <FontAwesomeIcon  icon={faUser}/>
                                 <input className="form-control" type="text" name="username" id="username" placeholder="Username"
                                     values={this.state.username}
                                     onChange={(e) => this.setState({ username: e.target.value })} />
                             </div>
-                            <div className="d-flex align-items-center">
-                                <span className="fas fa-key"></span>
+                            <div className="form-field d-flex align-items-center">
+                            <FontAwesomeIcon icon={faKey}/>
                                 <input className="form-control" type="password" name="password" id="password" placeholder="Password"
                                     values={this.state.password}
                                     onChange={(e) => this.setState({ password: e.target.value })} />
