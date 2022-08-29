@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import DetalleOrden from './DetalleOrden';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck, faEdit, faTimes, faWindowRestore } from '@fortawesome/free-solid-svg-icons' //Esto es para importar iconos, se deben mencionar cada icono especifico
+import { faCheck, faEdit, faEye, faTimes, faWindowRestore } from '@fortawesome/free-solid-svg-icons' //Esto es para importar iconos, se deben mencionar cada icono especifico
 import './Orden.css';
+import { Table, Button, ButtonGroup, Dropdown } from 'react-bootstrap';
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 
 
 class Orden extends Component {
@@ -25,10 +27,13 @@ class Orden extends Component {
 
     componentDidMount() {
         this.leerOrdenes();
+
     }
+
     componentDidUpdate() {
         this.leerOrdenes();
     }
+
 
     leerOrdenes() {
         const rutaServicio = "https://megalabs.digitalbroperu.com/serviciolistarorden.php"
@@ -38,19 +43,19 @@ class Orden extends Component {
             )
             .then(
                 (result) => {
-                    //console.log(result);
                     this.setState({
                         listaOrdenes: result
-                    }) //aca se crean las variables globales/ de estado
+                    });  //aca se crean las variables globales/ de estado
                 }
             )
     }
 
-
     dibujarTabla(datosTabla) {
+
         return (
+
             <div className="table-responsive table-bordered" id="tabla" role="tabpanel" aria-labelledby="home-tab" >
-                <table id="tabla" className="table" >
+                <Table id="tabla" className="table table-hover" >
                     <thead id="thead" className="table thead-dark">
                         <tr>
                             <th>Id Orden</th>
@@ -58,19 +63,17 @@ class Orden extends Component {
                             <th>Id Cliente AX</th>
                             <th>Nombre Cliente</th>
                             <th>Referencia</th>
-                            <th>Asignado por</th>
+                            <th>Asignar</th>
                             <th>Completado por</th>
                             <th>Fecha de Subida</th>
                             <th>Fecha de Inicio</th>
                             <th>Fecha Terminado</th>
                             <th>Estado</th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
+                            <th colSpan={3}>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {datosTabla.map(itemOrden =>
+                    <tbody >
+                        {datosTabla.map((itemOrden) =>
                             <tr key={itemOrden.idOrden}
                                 id={"li-orden-" + itemOrden.idOrden}
                                 onClick={() => this.seleccionarOrden(itemOrden)}>
@@ -79,18 +82,27 @@ class Orden extends Component {
                                 <td>{itemOrden.idClienteAx}</td>
                                 <td>{itemOrden.nombreCliente}</td>
                                 <td>{itemOrden.referencia}</td>
-                                <td>{itemOrden.asignadoPor}</td>
+                                <td style={{minWidth:'150px'}}>
+                                    <select class="form-select form-select-sm mb-3" aria-label=".form-select-lg example">
+                                        <option selected>Seleccione</option>
+                                        <option value="1">Mateo</option>
+                                        <option value="2">Marcos</option>
+                                        <option value="3">Lucas</option>
+                                    </select>
+                                    {/*{itemOrden.asignadoPor}*/}
+                                </td>
                                 <td>{itemOrden.completadoPor}</td>
                                 <td>{itemOrden.fechaSubida}</td>
                                 <td>{itemOrden.fechaInicio}</td>
                                 <td>{itemOrden.fechaCompletado}</td>
                                 <td>{itemOrden.estado}</td>
-                                <td><FontAwesomeIcon icon={faEdit} data-bs-toggle="modal" data-bs-target="#exampleModalCenter" /> </td>
+                                <td><FontAwesomeIcon icon={faEye} data-bs-toggle="modal" data-bs-target="#exampleModalCenter" /> </td>
                                 <td><FontAwesomeIcon icon={faTimes} onClick={() => this.mostrarEliminar(itemOrden)} /></td>
                             </tr>
                         )}
                     </tbody>
-                </table>
+                    <button className='btn btn-primary'>Proceder</button>
+                </Table>
             </div>
         )
     }
@@ -102,7 +114,7 @@ class Orden extends Component {
             var formData = new FormData();
             formData.append("idOrden", itemOrden.idOrden);
             fetch(rutaServicio, { method: 'POST', body: formData })
-                .then(() => { this.leerCategorias(); })
+                .then(() => { this.leerOrdenes(); })
         }
     })
 
@@ -129,9 +141,12 @@ class Orden extends Component {
         document.getElementById("li-orden-" + itemOrden.idOrden).classList.add("active"); //esto hace que se marque el elemento cliqueado como "activo"
     }
 
+
+
+    /*<DetalleOrden detalleOrden={this.state.ordenSeleccionada} />*/
     render() {
         let contenidoTablaOrden = this.dibujarTabla(this.state.listaOrdenes)
-        let contenidoTablaDetalle = <DetalleOrden detalleOrden={this.state.ordenSeleccionada} />
+        let contenidoTablaDetalle = <DetalleOrden detalleOrden={this.state.ordenSeleccionada}/>
 
         return (
             <section id="orden" className="padded">

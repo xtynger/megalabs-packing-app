@@ -9,3 +9,7 @@
     
 }
 
+/*PARA EXPANDIR PANTALLA OSCURA DEL MODAL */
+body.modal-open>div.modal-backdrop.fade.show{
+    width: calc(var(--nav-width) + 100%);
+}

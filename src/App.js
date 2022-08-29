@@ -12,9 +12,10 @@ import Home from './components/Home';
 function App() {
   return (
     <section id="body-pd">
+
+      <BrowserRouter>
       <MainHeader />
       <MainSidebar />
-      <BrowserRouter>
         <RouterView />
       </BrowserRouter>
     </section>

@@ -1,9 +1,9 @@
 <?php
 	require_once("config.php");
 
-	$CodOrden = $_REQUEST["pedidoDeVentas"];
+	$idArticulo = $_REQUEST["idArticulo"];
 	$rs = mysqli_query($cn,
-		"select * from Detalle_Orden where pedidoDeVentas='".$CodOrden."'");
+		"select * from Detalle_Orden where idArticulo=".$idArticulo);
 		
 		//contamos si existe un producto en la categoria
 	if($rs->num_rows > 0){
